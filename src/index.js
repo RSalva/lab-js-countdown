@@ -23,12 +23,11 @@ function startCountdown() {
 
   // Your code goes here ...
   const timer = setInterval(function() {
+    remainingTime -= 1;
+    document.querySelector("#time").innerText = remainingTime;
     if (remainingTime === 0) {
       clearTimeout(timer);
       showToast();
-    } else {
-      remainingTime -= 1;
-      document.querySelector("#time").innerText = remainingTime;
     }
   }, 1_000);
 }
@@ -38,10 +37,13 @@ function startCountdown() {
 
 // ITERATION 3: Show Toast
 function showToast(message) {
-  console.log("showToast called!");
+  // console.log("showToast called!");
 
   // Your code goes here ...
-
+  document.querySelector("div#toast").classList.add("show");
+  setTimeout(function () {
+    document.querySelector("div#toast").classList.remove("show");
+  }, 3_000);
 
 
 
