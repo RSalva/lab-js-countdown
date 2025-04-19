@@ -22,14 +22,19 @@ function startCountdown() {
 
 
   // Your code goes here ...
+  showToast("⏰ Final countdown! ⏰");
   timer = setInterval(function() {
     remainingTime -= 1;
+    console.log(remainingTime);
+    if (remainingTime === 5) {
+      showToast("Start the engines! 💥");
+    }
     document.querySelector("#time").innerText = remainingTime;
     if (remainingTime === 0) {
       clearTimeout(timer);
-      showToast();
+      showToast("Lift off! 🚀");
     }
-  }, 1_000);
+  }, 1_000);  
 }
 
 
@@ -42,6 +47,7 @@ function showToast(message) {
   // Your code goes here ...
 
   document.querySelector("div#toast").classList.add("show");
+  document.querySelector("#toast-message").innerText = message;
   setTimeout(function () {
     document.querySelector("div#toast").classList.remove("show");
   }, 3_000);
@@ -52,6 +58,7 @@ function showToast(message) {
 
   // Your code goes here ...
   document.querySelector("#close-toast").addEventListener("click", function() {
+
     document.querySelector("div#toast").classList.remove("show");
     clearInterval(timer);
   });
