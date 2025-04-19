@@ -22,7 +22,7 @@ function startCountdown() {
 
 
   // Your code goes here ...
-  const timer = setInterval(function() {
+  timer = setInterval(function() {
     remainingTime -= 1;
     document.querySelector("#time").innerText = remainingTime;
     if (remainingTime === 0) {
@@ -40,6 +40,7 @@ function showToast(message) {
   // console.log("showToast called!");
 
   // Your code goes here ...
+
   document.querySelector("div#toast").classList.add("show");
   setTimeout(function () {
     document.querySelector("div#toast").classList.remove("show");
@@ -50,5 +51,8 @@ function showToast(message) {
   // BONUS: ITERATION 4: TOAST CLOSE BUTTON
 
   // Your code goes here ...
-
+  document.querySelector("#close-toast").addEventListener("click", function() {
+    document.querySelector("div#toast").classList.remove("show");
+    clearInterval(timer);
+  });
 }
